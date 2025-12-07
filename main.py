@@ -2,10 +2,14 @@ import os
 import shutil
 
 mcEduPath = "/Applications/minecraft-edu.app"
+materialBinsPath = None
 scriptPath = os.path.dirname(os.path.abspath(__file__))
 MCPACKS = os.path.join(scriptPath, "MCPACKS")
-materialBinsPath = None
+Temp = os.path.join(scriptPath, "Temp")
 BackupMaterialBins = os.path.join(scriptPath, "BackupMaterialBins")
+os.remove(os.path.join(BackupMaterialBins, "te"))
+os.remove(os.path.join(MCPACKS, "te"))
+os.remove(os.path.join(Temp, "te"))
 
 def copyfiles(source_folder, destination_folder):
     for filename in os.listdir(source_folder):
@@ -57,7 +61,6 @@ else:
 option = input("Options:\n[1] Inject shaders in PACKS folder\n[2] Restore material bins from backup\n[3] (DO NOT SELECT IF SHADERS ARE CURRENTLY INJECTED) Backup material bins from current install\n")
 if option == "1":
     print("Injecting shaders from MCPACKS folder...")
-    Temp = os.path.join(scriptPath, "Temp")
     # Extract Resource Packs
     for filename in os.listdir(MCPACKS):
         file_path = os.path.join(MCPACKS, filename)
