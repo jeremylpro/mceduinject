@@ -7,9 +7,6 @@ scriptPath = os.path.dirname(os.path.abspath(__file__))
 MCPACKS = os.path.join(scriptPath, "MCPACKS")
 Temp = os.path.join(scriptPath, "Temp")
 BackupMaterialBins = os.path.join(scriptPath, "BackupMaterialBins")
-os.remove(os.path.join(BackupMaterialBins, "te"))
-os.remove(os.path.join(MCPACKS, "te"))
-os.remove(os.path.join(Temp, "te"))
 
 def copyfiles(source_folder, destination_folder):
     for filename in os.listdir(source_folder):
@@ -26,6 +23,8 @@ print("Made by jeremylpro on Github\n")
 
 # Check First Time Use
 if os.path.isfile(os.path.join(scriptPath, "NEW_USER")):
+    os.remove(os.path.join(BackupMaterialBins, "te"))
+    os.remove(os.path.join(MCPACKS, "te"))
     # New User Prompts
     pathinput = input("Is Minecraft Education installed in /Applications/minecraft-edu.app?\n(Press enter key if yes, specify path AND name of .app if the path is different.)\nE.g. /Applications/Games/minecraft-edu.app\n")
     if not pathinput.startswith("/") and pathinput != "":
